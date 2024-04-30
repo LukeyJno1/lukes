@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Tree and Required Files Finder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+</head>
+<body>
+    <h2>File Tree</h2>
+    <div id="file-tree"></div>
+    <h2>Required Files for Selected Document</h2>
+    <div id="required-files-info"></div>
+    <script>
+        $(function() {
+            $('#file-tree').jstree({
+                'core': {
+                    'data': {
+                        'url': 'file_paths.php',
+                        'dataType': 'json',
+                        'data': function(node) {
+                            return { 'id': node.id };
+                        }
+                    },
+                    'error': function(error) {
+                        console.error('jsTree Error:', error);
+                        $('#file-tree').html('<p>Error loading file tree. Please try again.</p>');
+                    }
+                }
+            }).on('select_node.jstree', function(event, data) {
+                var selectedFile = data.node.id; // Get the ID of the selected file
+                console.log('Selected File:', selectedFile);
+                $.ajax({
+                    url: 'get_required_file.php',
+                    method: 'POST',
+                    data: { file: selectedFile },
+                    success: function(response) {
+                        $('#required-files-info').html(response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        $('#required-files-info').html('<p>Error retrieving required files. Please try again.</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

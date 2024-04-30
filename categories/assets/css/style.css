@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+.breadcrumb-trail {
+    margin-left: 50px;
+    display: inline-block;
+    list-style: none;
+}
+
+.breadcrumb-trail li {
+    float: right;
+    padding: 5px;
+    background-color: #59A386;
+    border-radius: 50px;
+    position: relative;
+    margin-left: -50px;
+    transition: all 0.2s;
+    margin-top: 3px;
+}
+
+.breadcrumb-trail li a {
+    overflow: hidden;
+    border-radius: 50px;
+    transition: all 0.2s;
+    text-decoration: none;
+    height: 50px;
+    color: #59A386;
+    background-color: #65BA99;
+    text-align: center;
+    min-width: 50px;
+    display: block;
+    line-height: 50px;
+    padding-left: 52px;
+    padding-right: 25px;
+    width: 50px;
+}
+
+.breadcrumb-trail li a .icon {
+    display: inline-block;
+}
+
+.breadcrumb-trail li a .text {
+    display: none;
+    opacity: 0;
+}
+
+.breadcrumb-trail li a:hover {
+    width: 150px;
+    background-color: #7AC5AA;
+}
+
+.breadcrumb-trail li a:hover .text {
+    display: inline-block;
+    opacity: 1;
+}
+
+.breadcrumb-trail li:last-child a {
+    padding: 0;
+}
+
+.breadcrumb-trail li:last-child:hover {
+    padding: 3px;
+    margin-top: 0;
+}
+
+.breadcrumb-trail li:last-child:hover a {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+}
+
+/* CSS styles for the accordion */
+.accordion {
+    font-family: Arial, sans-serif;
+}
+
+.accordion-item {
+    
+    border-left: 0px solid #FFA07A; /* Light Salmon color */
+    padding: 2px;
+    margin-bottom: 2px;
+    width: 150px;
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+   
+}
+ 
+.category-link {
+    color: black; /* Change as needed */
+    text-decoration: none;
+    padding-left: 2px;
+}
+
+.accordion-header:hover .category-link {
+    text-decoration: underline;
+}
+
+.accordion-content {
+    display: none;
+    padding-left: 10px;
+   
+}
+
+.toggle-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+}
+
+.plus-icon {
+    background-image: url('http://localhost/listing/assets/images/plus-icon.png');
+}
+
+.minus-icon {
+    background-image: url('http://localhost/listing/assets/images/minus-icon.png');
+}
+.children {
+    margin-left: 20px;
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+}
+.expanded {
+    transform: rotate(45deg); /* Example transformation, adjust as needed */
+}
